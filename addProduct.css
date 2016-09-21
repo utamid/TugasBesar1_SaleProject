@@ -1,0 +1,42 @@
+h1 {
+	text-align: center;
+}
+.sale {
+	color: red;
+}
+.project {
+	color: blue;
+}
+h2 {
+	margin-left: 50px;
+	margin-bottom: 0px;
+}
+hr {
+	margin-left : 50px;
+	margin-bottom : 20px
+}
+form {
+	margin-left : 50px;
+	margin-right : 50px;
+}
+form input[type="reset"] {
+	float: right;
+	color: white;
+	background-color: blue;
+	margin: 0px;
+}
+form input[type="reset"] {
+	float: right;
+	color: white;
+	background-color: blue;
+	margin: 0px;
+}
+form input[type="submit"] {
+	float: right;
+	color: white;
+	background-color: blue;
+	margin: 0px;
+}
+form input[type="text"] {
+	width: 100%;
+}
