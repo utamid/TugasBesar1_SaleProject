@@ -1,0 +1,49 @@
+h1 {
+	font-family: arial;
+	text-align: center;
+}
+
+.sale {
+	color: red;
+}
+
+.project {
+	color: blue;
+}
+
+h2 {
+	margin-left: 50px;
+	margin-bottom: 0px;
+}
+
+hr {
+	margin-right: 50px;
+	margin-left: 50px;
+	margin-bottom: 20px;
+}
+
+form {
+	font-size: 12px;
+	margin-right: 50px;
+	margin-left: 50px;
+}
+
+form input[type="text"], input[type="password"] {
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+form input[type="submit"] {
+	margin-top: 10px;
+	float: right;
+	font-size: 13px;
+	color: white;
+	background-color: blue;
+	border: 0px;
+	padding: 2px;
+}
+
+p {
+	margin-left: 50px;
+	font-size: 13px;
+}
