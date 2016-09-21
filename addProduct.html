@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Add Product</title>
+	<link rel="stylesheet" type="text/css" href="addProduct.css"> 
+</head>
+<body>
+<h1>
+	<span class="sale">Sale</span>
+	<span class="project">Project</span>
+</h1>
+<h2> Please add your product here </h2>
+<hr>
+<form action = "addProduct.php" method = "post">
+	Name <br>
+	<input type="text" name = "name" rows="1" cols="40"> <br><br>
+	Description (max 200 chars)<br>
+	<input type="text" name = "description" rows=1000 cols="40"> <br><br>
+	Price (IDR) <br>
+	<input type="text" name = "price" cols="40"> <br><br>
+	Photo <br>
+	<input type="button" name= "choose_file" value = "choose file"> <br><br>
+	<input type="reset" name="cancel" value = "CANCEL">
+	<input type="submit" name="add" value = "ADD"> 
+</form>
+
+</body>
+</html>
