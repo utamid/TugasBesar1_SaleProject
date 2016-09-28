@@ -1,4 +1,39 @@
 <html>
+<head>
+	<title>Add Product</title>
+	<link rel="stylesheet" type="text/css" href="addProduct.css"> 
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+	<script>
+		function validateForm() {
+			var x = document.addProductForm.name.value;
+			var y = document.addProductForm.price.value;
+			var z = document.addProductForm.description.value;
+			var w = document.addProductForm.photo.value;
+			if (x == null || x == "" || y == null || y == "" || z == "" || z == null || w == "" || w == null) {
+				alert("Form must be completed");
+				return false;
+			}
+			else {
+				return true; 
+			}
+		}
+		function validateNumber() {
+			var key = (event.which) ? event.which : event.keyCode;
+			if (key > 47 && key < 58) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		function limitText() {
+			var x = document.addProductForm.description;
+			if (x.value.length > 200) {
+				x.value = x.value.substring(0,199);
+			}
+		}
+
+	</script>
+</head>
 <body>
 	<?php
 	$name = $description = $price = "";
@@ -13,22 +48,23 @@
 		$data = htmlspecialchars($data);
 		return $data;
 	}
+	?>
 	<?php
-	$target_dir = "uploads/";
-	$target_file = $target_dir . basename($_FILES["photo"]["name"]);
-	$uploadOk = 1;
-	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-	// Check if image file is a actual image or fake image
-	if(isset($_POST["submit"])) {
-		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-		if($check !== false) {
-			echo "File is an image - " . $check["mime"] . ".";
-			$uploadOk = 1;
-		} else {
-			echo "File is not an image.";
-			$uploadOk = 0;
+		$target_dir = "c:\Users\User\Desktop";
+		$target_file = $target_dir . basename($_FILES["photo"]["name"]);
+		$uploadOk = 1;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		// Check if image file is a actual image or fake image
+		if(isset($_POST["submit"])) {
+			$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+			if($check !== false) {
+				echo "File is an image - " . $check["mime"] . ".";
+				$uploadOk = 1;
+			} else {
+				echo "File is not an image.";
+				$uploadOk = 0;
+			}
 		}
-	}
 	?>
 	<?php
 	$servername = "localhost";
@@ -43,17 +79,44 @@
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
-	$sql = "INSERT INTO product (product_id, user_id, name, description, price)
-	VALUES ('2', '2', '$name', '$description', '$price')";
+	$sql = "INSERT INTO product (name, price, description, date_added, time_added, likes, purchases, photo, seller_id)
+	VALUES ('$name', '$price', '$description', CURDATE(), CURTIME(), '0', '0', '$target_file', '1')";
 
 	if (mysqli_query($conn, $sql)) {
-		echo "New record created successfully";
 	} else {
 		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 	}
 
 	mysqli_close($conn);
 	?>
+		
+<body>
+<h1>
+	<span class="sale">Sale</span><span class="project">Project</span>
+</h1>
+<p>Hi!</p>
+<p class="logout">logout</p>
+<ul>
+  <li><a href="#home">Catalog</a></li>
+  <li><a href="#news">Your Product</a></li>
+  <li><a href="#contact">Add Product</a></li>
+  <li><a href="#about">Sales</a></li>
+  <li><a href="#about">Purchases</a></li>
+</ul>
+<h2> Please add your product here </h2>
+<hr>
+<form name = "addProductForm" action = "addProduct.php" method = "post" onsubmit="return validateForm()" ontype enctype="multipart/form-data">
+	Name <br>
+	<input type="text" name = "name"> <br><br>
+	Description (max 200 chars)<br>
+	<textarea name = "description" onkeydown = "return limitText()"></textarea> <br><br>
+	Price (IDR) <br>
+	<input type="text" name = "price" onkeypress="return validateNumber()"> <br><br>
+	Photo <br>
+	<input type="file" name= "photo" accept="image/*"> <br><br>
+	<input type="reset" name="cancel" value = "CANCEL">
+	<input type="submit" name="add" value = "ADD"> 
+</form>
 
 </body>
 </html>
