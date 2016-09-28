@@ -32,10 +32,11 @@ CREATE TABLE `product` (
   `likes` int(20) DEFAULT NULL,
   `purchases` int(20) DEFAULT NULL,
   `seller_id` int(20) NOT NULL,
+  `photo` longblob,
   PRIMARY KEY (`id_product`,`seller_id`),
   KEY `seller_id` (`seller_id`),
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,13 +96,14 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id_user` int(20) NOT NULL AUTO_INCREMENT,
   `full_name` varchar(100) DEFAULT NULL,
-  `username` varchar(100) DEFAULT NULL,
-  `password` varchar(100) DEFAULT NULL,
+  `username` varchar(20) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
   `full_address` varchar(300) DEFAULT NULL,
   `postal_code` int(5) DEFAULT NULL,
   `phone_number` int(15) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,6 +112,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -122,4 +125,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-27 19:28:40
+-- Dump completed on 2016-09-28  9:14:57
