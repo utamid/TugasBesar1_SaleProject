@@ -50,7 +50,8 @@
 	}
 	?>
 	<?php
-		$target_dir = "c:\Users\User\Desktop";
+	if ($_SERVER["REQUEST_METHOD"]  == "POST") {
+		$target_dir = "img";
 		$target_file = $target_dir . basename($_FILES["photo"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -65,29 +66,32 @@
 				$uploadOk = 0;
 			}
 		}
+	}
 	?>
 	<?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "1234";
-	$dbname = "sale_project";
+	if ($_SERVER["REQUEST_METHOD"]  == "POST") {
+		$servername = "localhost";
+		$username = "root";
+		$password = "1234";
+		$dbname = "sale_project";
 
-	// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	// Check connection
-	if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
+		// Create connection
+		$conn = mysqli_connect($servername, $username, $password, $dbname);
+		// Check connection
+		if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+
+		$sql = "INSERT INTO product (name, price, description, date_added, time_added, likes, purchases, photo, seller_id)
+		VALUES ('$name', '$price', '$description', CURDATE(), CURTIME(), '0', '0', '$target_file', '1')";
+
+		if (mysqli_query($conn, $sql)) {
+		} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+
+		mysqli_close($conn);
 	}
-
-	$sql = "INSERT INTO product (name, price, description, date_added, time_added, likes, purchases, photo, seller_id)
-	VALUES ('$name', '$price', '$description', CURDATE(), CURTIME(), '0', '0', '$target_file', '1')";
-
-	if (mysqli_query($conn, $sql)) {
-	} else {
-		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-	}
-
-	mysqli_close($conn);
 	?>
 		
 <body>
