@@ -60,7 +60,7 @@
 		<div class="box">
 			<h2>Please login</h2>
 			<hr>
-			<form name="loginForm" action="login.php" method="post">
+			<form name="loginForm" action="catalog.php" method="post">
 				Email or Username<br>
 				<input type="text" name="usn" onkeypress="return limitText()"><br>
 				Password<br>
