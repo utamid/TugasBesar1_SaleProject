@@ -14,7 +14,7 @@
 		}
 		function limitText() {
 			var x = document.addProductForm.description;
-			if (x.value.length > 200) {
+			if (x.value.length = 200) {
 				x.value = x.value.substring(0,199);
 			}
 		}
@@ -30,7 +30,7 @@
 				}
 			}
 			if(!isValidFile) {
-				alert('Allowed Extensions are : *.' + allowedExtension.join(', *.'));
+				
 			}
 			return isValidFile;
 		}
@@ -71,9 +71,9 @@
 	?>
 	<?php
 	if ($_SERVER["REQUEST_METHOD"]  == "POST") {
-		//$target_dir = "img";
-		//$target_file = $target_dir . basename($_FILES["photo"]["name"]);
-		$target_file = basename($_FILES["photo"]["name"]);
+		$target_dir = "img/";
+		$target_file = $target_dir . basename($_FILES["photo"]["name"]);
+		//$target_file = basename($_FILES["photo"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		// Check if image file is a actual image or fake image
