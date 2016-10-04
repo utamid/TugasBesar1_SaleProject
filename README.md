@@ -134,7 +134,7 @@ Jika ada pertanyaan silakan tanyakan lewat milis.
 9. Purchases                : 13514071
 
 **Fungsionalitas**
-1. Login                    : 13513043
+1. Login                    : 13513043, 13514063
 2. Register                 : 13513071
 3. Catalog                  : 13514043
 4. Confirmation Purchase    : 13514063
