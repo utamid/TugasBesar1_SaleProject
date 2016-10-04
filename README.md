@@ -2,26 +2,28 @@
 
 Membuat Website Marketplace sederhana.
 
-**Luangkan waktu untuk membaca spek ini sampai selesai. Kerjakan hal yang perlu saja.**
 
 ## Deskripsi Singkat
 
-Pada tugas besar ini, Anda diminta untuk membuat aplikasi *marketplace* **berbasis web** yang memungkinkan seorang pengguna membeli dan menjual barang. Untuk menggunakan aplikasi ini, pengguna harus login terlebih dahulu. Pengguna tersebut dapat membeli dan menjual barang dengan akun yang sama.
+Pada tugas besar ini, kelompok diminta untuk membuat aplikasi *marketplace* **berbasis web** yang memungkinkan seorang pengguna membeli dan menjual barang. Untuk menggunakan aplikasi ini, pengguna harus login terlebih dahulu. Pengguna tersebut dapat membeli dan menjual barang dengan akun yang sama.
 
-Anda diminta untuk membuat tampilan sedemikian hingga mirip dengan tampilan pada contoh. Website yang diminta tidak harus responsive. Desain tampilan tidak perlu dibuat indah. Icon dan jenis font tidak harus sama dengan contoh. Warna font, garis pemisah, dan perbedaan ukuran font harus terlihat sesuai contoh. Format harga dan waktu harus terlihat sesuai contoh. Perhatikan juga **tata letak** elemen-elemen.
+Kelompok diminta untuk membuat tampilan sedemikian hingga mirip dengan tampilan pada contoh. Website yang diminta tidak harus *responsive*. Desain tampilan tidak perlu dibuat indah. Icon dan jenis font tidak harus sama dengan contoh. Warna font, garis pemisah, dan perbedaan ukuran font harus terlihat sesuai contoh. Format harga dan waktu harus terlihat sesuai contoh. Perhatikan juga **tata letak** elemen-elemen.
 
 ## Anggota Tim
 
-Setiap kelompok beranggotakan **3 orang**. Jika berlebih akan ada maksimal 2 kelompok yang beranggotakan 4 orang.
+Kelompok terdiri dari tiga orang, yakni
+1. Vitra Chandra    / 13514043
+2. Steffi Indrayani / 13514063
+3. Diastuti Utami   / 13514071
 
-## Petunjuk Pengerjaan
+## Langkah Pengerjaan
 
-1. Buatlah organisasi pada gitlab dengan nama sesuai dengan nama tim yang anda daftarkan.
-2. Tambahkan anggota tim pada organisasi anda.
+1. Membuat organisasi pada gitlab dengan nama sesuai dengan nama tim yang anda daftarkan.
+2. Menambahkan anggota tim pada organisasi.
 3. Fork pada repository ini dengan organisasi yang telah dibuat.
-4. Ubah hak akses repository hasil Fork anda menjadi **private**.
-5. Silakan commit pada repository anda (hasil fork). Lakukan berberapa commit dengan pesan yang bermakna, contoh: `fix css`, `create post done`, jangan seperti `final`, `benerin dikit`. Disarankan untuk tidak melakukan commit dengan perubahan yang besar karena akan mempengaruhi penilaian (contoh: hanya melakukan satu commit kemudian dikumpulkan). Sebaiknya commit dilakukan setiap ada penambahan fitur. **Commit dari setiap anggota tim akan mempengaruhi penilaian.** Jadi, setiap anggota tim harus melakukan commit yang berpengaruh terhadap proses pembuatan aplikasi.
-6. Edit file readme ini semenarik mungkin (gunakan panduan Markdown language), diperbolehkan untuk merubah struktur dari readme ini. (Soal tidak perlu dipertahankan).
+4. Mengubah hak akses repository hasil Fork anda menjadi **private**.
+5. Melakukan commit pada repository anda (hasil fork). Lakukan berberapa commit dengan pesan yang bermakna, contoh: `fix css`, `create post done`, jangan seperti `final`, `benerin dikit`. Disarankan untuk tidak melakukan commit dengan perubahan yang besar karena akan mempengaruhi penilaian (contoh: hanya melakukan satu commit kemudian dikumpulkan). Sebaiknya commit dilakukan setiap ada penambahan fitur. **Commit dari setiap anggota tim akan mempengaruhi penilaian.** Jadi, setiap anggota tim harus melakukan commit yang berpengaruh terhadap proses pembuatan aplikasi.
+6. Mengedit file readme ini semenarik mungkin (gunakan panduan Markdown language), diperbolehkan untuk merubah struktur dari readme ini. (Soal tidak perlu dipertahankan).
 7. Pada Readme terdapat tampilan aplikasi dan penjelasan mengenai pembagian tugas masing-masing anggota (lihat formatnya pada bagian **pembagian tugas**).
 8. Merge request dari repository anda ke repository ini dengan format **Nama kelompok** - **NIM terkecil** - **Nama Lengkap dengan NIM terkecil** sebelum **Sabtu, 8 Oktober 2016 23.59**.
 
@@ -121,15 +123,26 @@ Jika ada pertanyaan silakan tanyakan lewat milis.
 *Disarankan semua anggota kelompok mengerjakan tampilan dan fungsionalitasnya. Bukan hanya tampilan atau fungsionalitasnya saja*
 
 **Tampilan**
-1. Login : 135130xx, 135130xx
-2. Register : 135130xx
-3. Lanjutkan ...
+1. Login                    : 13513043
+2. Register                 : 13513071
+3. Catalog                  : 13514043
+4. Confirmation Purchase    : 13514063
+5. Your Product             : 13514043
+6. Add Product              : 13514063
+7. Edit Product             : 13514063
+8. Sales                    : 13514071
+9. Purchases                : 13514071
 
 **Fungsionalitas**
-1. Login : 135130xx, 135130xx
-2. Register : 135130xx
-3. Fungsionalitas : 135130xx,135130xx
-4. Lanjutkan...
+1. Login                    : 13513043
+2. Register                 : 13513071
+3. Catalog                  : 13514043
+4. Confirmation Purchase    : 13514063
+5. Your Product             : 13514043
+6. Add Product              : 13514063
+7. Edit Product             : 13514063
+8. Sales                    : 13514071
+9. Purchases                : 13514071
 
 ## About
 
