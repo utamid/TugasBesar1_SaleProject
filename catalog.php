@@ -66,7 +66,7 @@
 			<hr>
 		</div>
 		<div class="search-form">
-			<form name="searchCatalogForm" method = "post">
+			<form name="searchCatalogForm" method = "post" onsubmit="return validateForm()">
 				<div>
 					<input type="search" name="search" placeholder="Search catalog ...">
 					<input type="submit" name="go" value="GO">
@@ -136,7 +136,7 @@
 								<p> $likes likes <br>
 								$purch purchases </p>
 								<button class=\"likes\"> LIKE </button>
-								<button class=\"buy\"> <a href=\"confirm.php?id_user=$idus&id_product=$idpro\"> BUY </a> </p>
+								<button class=\"buy\"> <a href=\"confirmPurchase.php?id_user=$idus&id_product=$idpro\"> BUY </a> </button>
 							</div>
 							<hr class=\"line\">
 						</div>
