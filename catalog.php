@@ -51,7 +51,7 @@
 			<p class="logout">logout</p>
 		</div>
 		<div class="menu"><ul>
-			<li><a href="#">Catalog</a></li>
+			<li><a href="#" class="active">Catalog</a></li>
 			<li><a href="product.php?id_user=$idus">Your Product</a></li>
 			<li><a href="addProduct.php?id_user=$idus">Add Product</a></li>
 			<li><a href="sales.php?id_user=$idus">Sales</a></li>
