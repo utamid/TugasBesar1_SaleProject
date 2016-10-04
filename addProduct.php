@@ -135,7 +135,7 @@
 	Name <br>
 	<input type="text" name = "name"> <br><br>
 	Description (max 200 chars)<br>
-	<textarea name = "description" onkeydown = "return limitText()"></textarea> <br><br>
+	<textarea name = "description" onkeypress = "return limitText()" onkeyup="return limitText()"></textarea> <br><br>
 	Price (IDR) <br>
 	<input type="text" name = "price" onkeypress="return validateNumber()"> <br><br>
 	Photo <br>
