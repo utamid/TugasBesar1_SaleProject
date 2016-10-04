@@ -79,6 +79,10 @@ li a:hover {
     background-color: #6194BC;
     color: white;
 }
+.active {
+	background-color: #6194BC;
+    color: white;
+}
 
 /* Search */
 .search-form {
