@@ -10,15 +10,15 @@ h1 {
 	font-weight: normal;
 }
 .sale {
-	color: #981B1E;
+	color: #E4001B;
 }
 .project {
-	color: #5781C2;
+	color: #6194BC;
 }
 
 .box {
-	margin-right: 50px;
-	margin-left: 65px;
+	width: 80%;
+	margin: auto;
 }
 
 /* Please Login */
@@ -35,34 +35,40 @@ form {
 	font-size: 12px;
 }
 form input[type="text"], input[type="password"] {
-	margin-right: 70px;
+	font-family: Montserrat;
+	margin: auto;
 	margin-bottom: 15px;
 	width: 100%;
-	padding: 6px 0px;
+	padding: 5px 0px;
 }
 form input[type="submit"] {
-	margin: 0px;
+	margin: 0;
 	float: right;
 	font-size: 14px;
 	color: white;
-	background-color: #5781C2;
+	background-color: #6194BC;
 	border: 0px;
 	font-family: Montserrat;
 	padding: 5px 22px 5px 22px;
-}
-
-/* Don't have account */
-p {
-	clear: left;
-	font-size: 15px;
-}
-
-p a {
-	text-decoration: none;
-	color: #5781C2;
+	cursor: pointer;
 }
 
 /* Invalid */
 .inv {
-	color: red;
+	display: inline-block;
+	color: #E4001B;
 }
+
+/* Register */
+.regis {
+	margin: 0;
+	display: static;
+	clear: right;
+	font-size: 15px;
+}
+.regis a {
+	text-decoration: none;
+	color: #6194BC;
+	cursor: pointer;
+}
+
