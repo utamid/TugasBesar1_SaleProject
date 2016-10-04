@@ -1,0 +1,185 @@
+html {
+	font-family: Montserrat;
+}
+
+/* SaleProject */
+h1 {
+	margin-top: 40px;
+	font-size: 30px;
+	text-align: center;
+	font-weight: normal;
+}
+.sale {
+	color: #E4001B;
+}
+.project {
+	color: #6194BC;
+}
+
+.box {
+	width: 80%;
+	margin: auto;
+}
+
+/* What */
+h2 {
+	margin-top: 35px;
+	margin-bottom: 15px;
+	font-weight: normal;
+	font-size: 23px;
+}
+
+/* Hi */
+.hi {
+	float: right;
+	text-align: right;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 0px 10% 20px 10%;
+}
+.hi p {
+	margin-bottom: 0px;
+}
+.logout {
+	font-size: 80%;
+	margin-top: 0px;
+	color: #E4001B;
+	cursor: pointer;
+}
+
+/* list */
+.menu {
+	margin-left: 10%;
+	margin-right: 10%;
+	clear: right;
+	text-align: center;
+	width: 90%;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: 50px;
+}
+li {
+    float: left;
+    width: 17.5%;
+    border: 1px solid black;
+}
+li a {
+    display: block;
+    color: black;
+    padding: 8px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 80%;
+}
+li a:hover {
+    background-color: #6194BC;
+    color: white;
+}
+
+/* Search */
+.search-form {
+	margin: auto;
+	width: 80%;
+}
+form input[type="search"] {
+	font-family: Montserrat;
+	border: 0px;
+	background-color: #ECECEC;
+	width: 90%;
+	font-size: 14px;
+	padding: 5px;
+	margin: 20px 0px;
+	float: left;
+}
+form input[type="submit"] {
+	margin: 20px 0px;
+	float: right;
+	font-size: 14px;
+	color: white;
+	background-color: #6194BC;
+	border: 0px;
+	font-family: Montserrat;
+	padding: 5px 2%;
+	cursor: pointer;
+}
+.by {
+	font-size: 13px;
+	clear: left;
+	float: left;
+	margin-right: 20px;
+}
+.radio-button {
+	font-size: 13px;
+	float: left;
+	margin-bottom: 30px;
+}
+
+/* Item */
+.item {
+	clear: left;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12px;
+}
+.item .item-photo {
+	margin: 10px 10px;
+	float : left;
+	width: 15%;
+}
+.item .item-img {
+	width: 80px;
+	height: 80px;
+	border: 1px solid;
+	border-color: #ECECEC; 
+}
+.item .item-desc {
+	margin: 0px 3%;
+	float: left;
+	width: 45%;
+}
+.item .item-desc .name {
+	font-size: 160%;
+	font-weight: bold;
+}
+.item .item-desc .price {
+	font-size: 130%;
+}
+.item .item-like {
+	float: right;
+	width: 20%;
+	margin: 10px 5%;
+}
+.item .likes {
+	font-size: 14px;
+	font-weight: bold;
+	color: #6194BC;
+	text-decoration: none;
+	cursor: pointer;
+	border: none;
+	background: none;
+	float: left;
+	padding: 5px 10%;
+}
+.item .buy {
+	font-size: 14px;
+	font-weight: bold;
+	cursor: pointer;
+	border: none;
+	background: none;
+	float: left;
+	padding: 5px 10%;
+}
+.item .buy a {
+	color: green;
+	text-decoration: none;
+	float: right;
+}
+.item .line {
+	clear: left;
+	margin-bottom: 50px;
+}
