@@ -48,5 +48,6 @@ function limitText() {
 }
 function multiplication(y) {
 	var x = document.confirmPurchaseForm.quantity;
-	document.confirmPurchaseForm.total_price.value = x.value * y;
+	var z = x.value * y;
+	document.confirmPurchaseForm.total_price.value = z.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
 }
