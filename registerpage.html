@@ -1,43 +1,100 @@
 <!DOCTYPE html>
-<html>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Register - SaleProject</title>
-	<link rel="stylesheet" type="text/css" href="css/register.css">
-<body>	
-	<h1> <span> <class = "sale"> Sale <class="Project"> Project</span> </h1> 
-	<h2>Please Register</h2>
-	<hr class = "title-divider">
-	<br>
-	<!--Register Form-->
-	<form action="register.php">
 
-    			Full Name<br>
-    			<input type="text" name="fullname">
-    			<br>
-    			Username<br>
-    			<input type="text" name="username">
-    			<br>
-    			Email<br>
-    			<input type="email" name="mail">
-    			<br>
-    			Password<br>
-    			<input type="password" name="pass">
-    			<br>
-    			Confirm Password<br>
-    			<input type="password" name="confpass">
-    			<br>
-    			Address<br>
-    			<input type="text" name="address">
-    			<br>	
-    			Postal Code<br>
-    			<input type="text" name="address">
-    			<br>	
-    			Phone Number<br>
-    			<input type="tel" name="phone">
-    			<br><br>
-			<input class="button" type="submit" value="REGISTER">
-	
+<html>
+	<HEAD>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Register - SaleProject</title>
+		<!--link rel="stylesheet" type="text/css" href="css/register.css"-->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<script language="JavaScript" src="register.js" type="text/javascript"></script>
+	</HEAD>
+
+	<BODY>
+		<?php
+			function test_input($data) {
+				$data = trim($data);
+				$data = stripslashes($data);
+				$data = htmlspecialchars($data);
+				return $data;
+			}
+		?>
+		<h1> <span class = "sale">Sale</span><span class="Project">Project</span> </h1> 
+		<h2>Please Register</h2>
+		<hr class = "title-divider">
+		<br>
+		<!--Register Form-->
+		<form name="register" method="POST" onsubmit="return (Validate());">
+			Full Name<br>
+			<div id = "errfn"> </div>
+			<input type="text" name="fullname">
+			<br>
+			Username<br>
+			<div id = "errun"> </div>
+			<input type="text" name="username">
+			<br>
+			Email<br>
+			<div id = "errmail"> </div>
+			<input type="email" name="mail">
+			<br>
+			Password<br>
+			<div id = "errpass"> </div>
+			<input type="password" name="pass">
+			<br>
+			Confirm Password<br>
+			<div id = "errcpass"> </div>
+			<input type="password" name="confpass">
+			<br>
+			Address<br>
+			<div id = "erraddr"> </div>
+			<input type="text" name="address">
+			<br>	
+			Postal Code<br>
+			<div id = "errpc"> </div>
+			<input type="text" name="postcode">
+			<br>	
+			Phone Number<br>
+			<div id = "errpn"> </div>
+			<input type="tel" name="phone">
+			<br><br>
+			
+    	<?php
+			if ($_SERVER["REQUEST_METHOD"]  == "POST") {
+				$fullname = test_input($_POST["fullname"]);
+				$username = test_input($_POST["username"]);
+				$pass = test_input($_POST["pass"]);
+				$address = test_input($_POST["address"]);
+				$postcode = test_input($_POST["postcode"]);
+				$phone = test_input($_POST["phone"]);
+				$mail = test_input($_POST["mail"]);
+				
+				$servername = "localhost";
+				$usrn = "root";
+				$password = "5869";
+				$dbname = "sale_project";
+				$conn = mysqli_connect($servername, $usrn, $password, $dbname);
+				if (!$conn) {
+					die("Connection failed: " . mysqli_connect_error());
+				}
+				$sql1 = "SELECT * from user WHERE username = '$username'";
+				$sql2 = "SELECT * from user WHERE email = '$mail'";
+				$result = mysqli_query($conn, $sql1);
+				$result2 = mysqli_query($conn, $sql2);
+				$count = mysqli_num_rows($result);
+				$count2 = mysqli_num_rows($result2);
+				if (($count < 1) && ($count2 < 1)) {
+					$sql = "INSERT INTO user (full_name, username, password, full_address, postal_code, phone_number, email)
+					VALUES ('$fullname', '$username', '$pass', '$address', 'postcode', 'phone', 'mail')";
+				}
+				else {
+					$errun = "Username already exists";
+				}
+				mysqli_close($conn);
+			}
+		?>
+		
+		<input class="button" type="submit" value="REGISTER">
 	</form>
 </body>
+
 
 </html>
