@@ -1,22 +1,14 @@
 <!DOCTYPE HTML>
 <HTML>
 	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<TITLE>Catalogue - SaleProject</TITLE>
 		<link rel="stylesheet" type="text/css" href="catalog.css">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-		<script src="catalog.js"></script>
+		<script src="catalog.js" type="text/javascript"></script>
 	</HEAD>
 	<BODY>
 		<?php
-			function monthname($data) {
-				switch (n) {
-					case 1: "January"; break;
-					case 2: "February"; break;
-					case 3: "March"; break;
-					case 4: "April"; break;
-					case 5: "May"; break;
-				}
-			}
 			function test_input($data) {
 				$data = trim($data);
 				$data = stripslashes($data);
@@ -48,7 +40,7 @@
 			<?php
 				echo "<p>Hi, $name!</p>";
 			?>
-			<p class="logout">logout</p>
+			<p class="logout"> <a href="login.php"> logout </a> </p>
 		</div>
 		<?php 
 			echo "
@@ -75,9 +67,10 @@
 					by
 				</div>
 				<div class="radio-button">
-					<input type="radio" name="search_button" value="product"> product <br>
+					<input type="radio" name="search_button" value="product" checked> product <br>
 					<input type="radio" name="search_button" value="store"> store <br>
 				</div>
+				<div id = "errmsg" class="err-msg"> </div>
 			</form>
 		</div>
 		<?php
@@ -97,51 +90,58 @@
 				}
 
 				if ($search_by == "product") {
-					$sql = "SELECT id_product, name, price, description, date_added, time_added, likes, purchases, seller_id, photo, username FROM product, user WHERE id_user = seller_id AND name like '%$search%'";
+					$sql = "SELECT id_product, name, price, description, date_added, time_added, seller_id, photo, username, deleted FROM product, user WHERE id_user = seller_id AND name like '%$search%'";
 				} else {
-					$sql = "SELECT id_product, name, price, description, date_added, time_added, likes, purchases, seller_id, photo, username FROM product, user WHERE id_user = seller_id AND username like '%$search%'";
+					$sql = "SELECT id_product, name, price, description, date_added, time_added, seller_id, photo, username, deleted FROM product, user WHERE id_user = seller_id AND username like '%$search%'";
 				}
 
 				$result = mysqli_query($conn, $sql);
 				while ($row = mysqli_fetch_assoc($result)) {
-					setlocale(LC_MONETARY, "en_IND");
-					$idpro = $row['id_product'];
-					$usn = $row['username'];
-					$phpdate = strtotime($row['date_added']);
-					$date = date("l, d F Y", $phpdate);
-					$phptime = strtotime($row['time_added']);
-					$time = date("h.i", $phptime);
-					$photo = $row['photo'];
-					$name = $row['name'];
-					$phpprice = $row['price'];
-					$price = number_format($phpprice, 0, ',', '.');
-					$desc = $row['description'];
-					$likes = $row['likes'];
-					$purch = $row['purchases'];
+					$deleted = $row['deleted'];
+					if (!$deleted) {
+						$idpro = $row['id_product'];
+						$usn = $row['username'];
+						$phpdate = strtotime($row['date_added']);
+						$date = date("l, d F Y", $phpdate);
+						$phptime = strtotime($row['time_added']);
+						$time = date("h.i", $phptime);
+						$photo = $row['photo'];
+						$name = $row['name'];
+						$phpprice = $row['price'];
+						$price = number_format($phpprice, 0, ',', '.');
+						$desc = $row['description'];
+						$sql1 = "SELECT count(id_product) FROM likes WHERE id_product = $idpro";
+						$likes = mysqli_fetch_assoc(mysqli_query($conn, $sql1))['count(id_product)'];
+						$sql2 = "SELECT sum(quantity) FROM purchase WHERE id_product = $idpro";
+						$purch = mysqli_fetch_assoc(mysqli_query($conn, $sql2))['sum(quantity)'];;
+						if ($purch == NULL) {
+							$purch = 0;
+						}
+						
 
-					echo "
-						<div class=\"item\">
-							<p class=\"usn\"> <b> $usn </b> <br>
-							added this on $date, at $time</p>
-							<hr>
-							<div class=\"item-photo\">
-								<img class=\"item-img\" src=\"$photo\">
+						echo "
+							<div class=\"item\">
+								<p class=\"usn\"> <b> $usn </b> <br>
+								added this on $date, at $time</p>
+								<hr>
+								<div class=\"item-photo\">
+									<img class=\"item-img\" src=\"$photo\">
+								</div>
+								<div class=\"item-desc\">
+									<p> <span class=\"name\"> $name </span> <br>
+									<span class=\"price\"> IDR $price </span> <br>
+									$desc </p>
+								</div>
+								<div class=\"item-like\"> 
+									<p> $likes likes <br>
+									$purch purchases </p>
+									<button class=\"likes\"> LIKE </button>
+									<button class=\"buy\"> <a href=\"confirmPurchase.php?id_user=$idus&id_product=$idpro\"> BUY </a> </button>
+								</div>
+								<hr class=\"line\">
 							</div>
-							<div class=\"item-desc\">
-								<p> <span class=\"name\"> $name </span> <br>
-								<span class=\"price\"> IDR $price </span> <br>
-								$desc </p>
-							</div>
-							<div class=\"item-like\"> 
-								<p> $likes likes <br>
-								$purch purchases </p>
-								<button class=\"likes\"> LIKE </button>
-								<button class=\"buy\"> <a href=\"confirmPurchase.php?id_user=$idus&id_product=$idpro\"> BUY </a> </button>
-							</div>
-							<hr class=\"line\">
-						</div>
-
-					";
+						";
+					}
 				};
 				mysqli_close($conn);
 			}

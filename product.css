@@ -19,6 +19,7 @@ h1 {
 .box {
 	width: 80%;
 	margin: auto;
+	margin-bottom: 50px;
 }
 
 /* What */
@@ -45,6 +46,10 @@ h2 {
 	margin-top: 0px;
 	color: #E4001B;
 	cursor: pointer;
+}
+.logout a {
+	color: #E4001B;
+	text-decoration: none;
 }
 
 /* list */

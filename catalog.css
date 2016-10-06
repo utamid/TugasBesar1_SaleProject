@@ -46,6 +46,10 @@ h2 {
 	color: #E4001B;
 	cursor: pointer;
 }
+.logout a {
+	color: #E4001B;
+	text-decoration: none;
+}
 
 /* list */
 .menu {
@@ -186,4 +190,9 @@ form input[type="submit"] {
 .item .line {
 	clear: left;
 	margin-bottom: 50px;
+}
+.err-msg {
+	clear:	left;
+	color: #E4001B;
+	font-size: 12px;
 }

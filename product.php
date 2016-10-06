@@ -4,7 +4,7 @@
 		<TITLE>Your Product - SaleProject</TITLE>
 		<link rel="stylesheet" type="text/css" href="product.css">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-		<script src="product.js"></script>
+		<script src="product.js" type="text/javascript"></script>
 	</HEAD>
 	<BODY>
 		<?php
@@ -32,7 +32,7 @@
 			<?php
 				echo "<p>Hi, $name!</p>";
 			?>
-			<p class="logout">logout</p>
+			<p class="logout"> <a href="login.php"> logout </a> </p>
 		</div>
 		<?php 
 			echo "
@@ -64,42 +64,49 @@
 
 			$result = mysqli_query($conn, $sql);
 			while ($row = mysqli_fetch_assoc($result)) {
-				setlocale(LC_MONETARY, "en_IND");
-				$idpro = $row['id_product'];
-				$phpdate = strtotime($row['date_added']);
-				$date = date("l, d F Y", $phpdate);
-				$phptime = strtotime($row['time_added']);
-				$time = date("h.i", $phptime);
-				$photo = $row['photo'];
-				$name = $row['name'];
-				$phpprice = $row['price'];
-				$price = number_format($phpprice, 0, ',', '.');
-				$desc = $row['description'];
-				$likes = $row['likes'];
-				$purch = $row['purchases'];
+				$deleted = $row['deleted'];
+				if (!$deleted) {
+					$idpro = $row['id_product'];
+					$phpdate = strtotime($row['date_added']);
+					$date = date("l, d F Y", $phpdate);
+					$phptime = strtotime($row['time_added']);
+					$time = date("h.i", $phptime);
+					$photo = $row['photo'];
+					$name = $row['name'];
+					$phpprice = $row['price'];
+					$price = number_format($phpprice, 0, ',', '.');
+					$desc = $row['description'];
+					$sql1 = "SELECT count(id_product) FROM likes WHERE id_product = $idpro";
+					$likes = mysqli_fetch_assoc(mysqli_query($conn, $sql1))['count(id_product)'];
+					$sql2 = "SELECT sum(quantity) FROM purchase WHERE id_product = $idpro";
+					$purch = mysqli_fetch_assoc(mysqli_query($conn, $sql2))['sum(quantity)'];
+					if ($purch == NULL) {
+						$purch = 0;
+					}
 
-				echo "
-					<div class=\"item\">
-						<p> <b> $date </b> <br>
-						at $time</p>
-						<hr>
-						<div class=\"item-photo\">
-							<img class=\"item-img\" src=\"$photo\">
+					echo "
+						<div class=\"item\">
+							<p> <b> $date </b> <br>
+							at $time</p>
+							<hr>
+							<div class=\"item-photo\">
+								<img class=\"item-img\" src=\"$photo\">
+							</div>
+							<div class=\"item-desc\">
+								<p> <span class=\"name\"> $name </span> <br>
+								<span class=\"price\"> IDR $price </span> <br>
+								$desc </p>
+							</div>
+							<div class=\"item-edit\"> 
+								<p> $likes likes <br>
+								$purch purchases </p>
+								<button class=\"edit\"> <a href=\"editProduct.php?id_user=$idus&id_product=$idpro\"> EDIT </a> </button>
+								<button name=\"delete\" class=\"delete\" onclick=\"Delete($idpro, $idus)\"> DELETE </button>
+							</div>
+							<hr class=\"line\">
 						</div>
-						<div class=\"item-desc\">
-							<p> <span class=\"name\"> $name </span> <br>
-							<span class=\"price\"> IDR $price </span> <br>
-							$desc </p>
-						</div>
-						<div class=\"item-edit\"> 
-							<p> $likes likes <br>
-							$purch purchases </p>
-							<button class=\"edit\"> <a href=\"editProduct.php?id_user=$idus&id_product=$idpro\"> EDIT </a> </button>
-							<button class=\"delete\"> DELETE </button>
-						</div>
-						<hr class=\"line\">
-					</div>
-				";
+					";
+				}
 			};
 			mysqli_close($conn);
 		?>

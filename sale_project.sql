@@ -36,7 +36,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`id_product`,`seller_id`),
   KEY `seller_id` (`seller_id`),
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (19,'Ades',3000,'Air minum dalam kemasan','2016-10-04','15:09:50',2,100,5,'img/a.jpg'),(20,'AQUA',3500,'Air minum mineral','2016-10-04','15:10:33',5,121,6,'img/a.jpg'),(21,'Nasi Kuning',6000,'Nasi kuning dengan telur, tempe, dan bihun','2016-10-04','15:11:59',100,1412,4,'img/a.jpg');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,7 +106,7 @@ CREATE TABLE `user` (
   `phone_number` varchar(15) DEFAULT NULL,
   `email` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,6 +115,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (4,'Vitra Chandra','vitchan','6696','Jl Cimbel','40121','08126087846','vitrachandra@gmail.com'),(5,'Steffi Indrayani','jooney_16s','1234','Jl Pelangi','40123','081234567890','steffiinin@gmail.com'),(6,'Taufic Leonardo Sutejo','upiki','taufic96','Jl Cisitu','40151','0812131415161','tauficls@gmail.com');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -126,4 +128,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-04 13:30:44
+-- Dump completed on 2016-10-04 17:35:37
