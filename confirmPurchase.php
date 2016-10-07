@@ -152,7 +152,7 @@
 					<input type="text" name = "credit_card_number" onkeypress="return validateNumber() && limitText()" onkeyup="return limitText()"> <br><br>
 					3 Digits Card Verification Value <br>
 					<input type="text" name = "verification_value" onkeypress="return validateNumber() && limitText()" onkeyup="return limitText()"> <br><br><br>
-					<input type="reset" name="cancel" value = "CANCEL">
+					<button class="cancel"> <a href="catalog.php?id_user=<?php echo $id_user?>"> CANCEL </a> </button>
 					<input type="submit" name="confirm" value = "CONFIRM">
 				</div>
 			</form>
