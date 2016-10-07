@@ -74,77 +74,87 @@
 			</form>
 		</div>
 		<?php
+			$servername = "localhost";
+			$username = "wbd";
+			$password = "6696";
+			$dbname = "sale_project";
+
+			$conn = mysqli_connect($servername, $username, $password, $dbname);
+			if (!$conn) {
+				die("Connection failed: " . mysqli_connect_error());
+			}
+
 			if ($_SERVER["REQUEST_METHOD"]  == "POST") {
 				$search = $search_by = "";
 				$search = test_input($_POST["search"]);
 				$search_by = $_POST["search_button"];
 
-				$servername = "localhost";
-				$username = "wbd";
-				$password = "6696";
-				$dbname = "sale_project";
-
-				$conn = mysqli_connect($servername, $username, $password, $dbname);
-				if (!$conn) {
-					die("Connection failed: " . mysqli_connect_error());
-				}
-
 				if ($search_by == "product") {
-					$sql = "SELECT id_product, name, price, description, date_added, time_added, seller_id, photo, username, deleted FROM product, user WHERE id_user = seller_id AND name like '%$search%'";
+					$sql = "SELECT id_product, name, price, description, date_added, time_added, seller_id, photo, username, deleted FROM product, user WHERE id_user = seller_id AND name like '%$search%' ORDER BY date_added DESC, time_added DESC";
 				} else {
-					$sql = "SELECT id_product, name, price, description, date_added, time_added, seller_id, photo, username, deleted FROM product, user WHERE id_user = seller_id AND username like '%$search%'";
+					$sql = "SELECT id_product, name, price, description, date_added, time_added, seller_id, photo, username, deleted FROM product, user WHERE id_user = seller_id AND username like '%$search%' ORDER BY date_added DESC, time_added DESC";
 				}
-
-				$result = mysqli_query($conn, $sql);
-				while ($row = mysqli_fetch_assoc($result)) {
-					$deleted = $row['deleted'];
-					if (!$deleted) {
-						$idpro = $row['id_product'];
-						$usn = $row['username'];
-						$phpdate = strtotime($row['date_added']);
-						$date = date("l, d F Y", $phpdate);
-						$phptime = strtotime($row['time_added']);
-						$time = date("h.i", $phptime);
-						$photo = $row['photo'];
-						$name = $row['name'];
-						$phpprice = $row['price'];
-						$price = number_format($phpprice, 0, ',', '.');
-						$desc = $row['description'];
-						$sql1 = "SELECT count(id_product) FROM likes WHERE id_product = $idpro";
-						$likes = mysqli_fetch_assoc(mysqli_query($conn, $sql1))['count(id_product)'];
-						$sql2 = "SELECT sum(quantity) FROM purchase WHERE id_product = $idpro";
-						$purch = mysqli_fetch_assoc(mysqli_query($conn, $sql2))['sum(quantity)'];;
-						if ($purch == NULL) {
-							$purch = 0;
-						}
-						
-
-						echo "
-							<div class=\"item\">
-								<p class=\"usn\"> <b> $usn </b> <br>
-								added this on $date, at $time</p>
-								<hr>
-								<div class=\"item-photo\">
-									<img class=\"item-img\" src=\"$photo\">
-								</div>
-								<div class=\"item-desc\">
-									<p> <span class=\"name\"> $name </span> <br>
-									<span class=\"price\"> IDR $price </span> <br>
-									$desc </p>
-								</div>
-								<div class=\"item-like\"> 
-									<p> $likes likes <br>
-									$purch purchases </p>
-									<button class=\"likes\"> LIKE </button>
-									<button class=\"buy\"> <a href=\"confirmPurchase.php?id_user=$idus&id_product=$idpro\"> BUY </a> </button>
-								</div>
-								<hr class=\"line\">
-							</div>
-						";
-					}
-				};
-				mysqli_close($conn);
+			} else {
+				$sql = "SELECT id_product, name, price, description, date_added, time_added, seller_id, photo, username, deleted FROM product, user WHERE id_user = seller_id ORDER BY date_added DESC, time_added DESC";
 			}
+			$result = mysqli_query($conn, $sql);
+			while ($row = mysqli_fetch_assoc($result)) {
+				$deleted = $row['deleted'];
+				if (!$deleted) {
+					$idpro = $row['id_product'];
+					$iditem = "item" . $idpro;
+					$usn = $row['username'];
+					$phpdate = strtotime($row['date_added']);
+					$date = date("l, d F Y", $phpdate);
+					$phptime = strtotime($row['time_added']);
+					$time = date("h.i", $phptime);
+					$photo = $row['photo'];
+					$name = $row['name'];
+					$phpprice = $row['price'];
+					$price = number_format($phpprice, 0, ',', '.');
+					$desc = $row['description'];
+					$sql1 = "SELECT count(id_product) FROM likes WHERE id_product = $idpro";
+					$likes = mysqli_fetch_assoc(mysqli_query($conn, $sql1))['count(id_product)'];
+					$sql2 = "SELECT sum(quantity) FROM purchase WHERE id_product = $idpro";
+					$purch = mysqli_fetch_assoc(mysqli_query($conn, $sql2))['sum(quantity)'];;
+					if ($purch == NULL) {
+						$purch = 0;
+					}
+					$sql3 = "SELECT * FROM likes WHERE id_product = $idpro AND id_user = $idus";
+					$result3 = mysqli_query($conn, $sql3);
+					$count = mysqli_num_rows($result3);
+					if ($count < 1) {
+						$printlike = "<button name=\"likes\" class=\"likes\" onclick=\"return alterLikes($idus, $idpro, 0, $purch)\"> LIKE </button>";
+					} else {
+						$printlike = "<button name=\"likes\" class=\"liked\" onclick=\"return alterLikes($idus, $idpro, 1, $purch)\"> LIKED </button>";
+					}
+					
+
+					echo "
+						<div class=\"item\">
+							<p class=\"usn\"> <b> $usn </b> <br>
+							added this on $date, at $time</p>
+							<hr>
+							<div class=\"item-photo\">
+								<img class=\"item-img\" src=\"$photo\">
+							</div>
+							<div class=\"item-desc\">
+								<p> <span class=\"name\"> $name </span> <br>
+								<span class=\"price\"> IDR $price </span> <br>
+								$desc </p>
+							</div>
+							<div id=\"$iditem\" class=\"item-like\"> 
+								<p> $likes likes <br>
+								$purch purchases </p>
+								$printlike
+								<button class=\"buy\"> <a href=\"confirmPurchase.php?id_user=$idus&id_product=$idpro\"> BUY </a> </button>
+							</div>
+							<hr class=\"line\">
+						</div>
+					";
+				}
+			};
+			mysqli_close($conn);
 		?>
 	</BODY>
 </HTML>

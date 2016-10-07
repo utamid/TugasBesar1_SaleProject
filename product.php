@@ -60,7 +60,7 @@
 				die("Connection failed: " . mysqli_connect_error());
 			}
 
-			$sql = "SELECT * FROM product WHERE seller_id = $idus";
+			$sql = "SELECT * FROM product WHERE seller_id = $idus ORDER BY date_added DESC, time_added DESC";
 
 			$result = mysqli_query($conn, $sql);
 			while ($row = mysqli_fetch_assoc($result)) {

@@ -173,6 +173,17 @@ form input[type="submit"] {
 	float: left;
 	padding: 5px 10%;
 }
+.item .liked {
+	font-size: 14px;
+	font-weight: bold;
+	color: #E4001B;
+	text-decoration: none;
+	cursor: pointer;
+	border: none;
+	background: none;
+	float: left;
+	padding: 5px 5%;
+}
 .item .buy {
 	font-size: 14px;
 	font-weight: bold;

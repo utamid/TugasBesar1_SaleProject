@@ -102,17 +102,17 @@ Halaman ini berisi histori pembelian barang oleh pengguna. Apabila data barang t
 
 ### Validasi
 
-Validasi dilakukan pada *client-side* dengan menggunakan **javascript**, yaitu:
+Validasi **wajib** dilakukan pada *client-side*, dengan menggunakan **javascript** bukan HTML 5 input type, yaitu:
 - Setiap field pada form tidak boleh kosong. Termasuk juga gambar barang ketika add product.
 - Email harus sesuai format email.
 - Harga harus integer.
-- Khusus deskripsi pada add dan edit product, dipastikan terdiri dari maksimal 200 karakter.
+- Khusus deskripsi pada add dan edit product, pastikan terdiri dari maksimal 200 karakter.
 - Nilai dari Card Verification Value harus terdiri dari 3 digit.
 - Nilai dari Credit Card harus terdiri dari 12 digit.
 
 ## Knowledge
 
-Untuk meringankan beban tugas ini, ada beberapa keyword yang digunakan untuk menyelesaikan tugas ini.
+Untuk meringankan beban tugas ini, ada berberapa keyword yang bisa anda cari untuk menyelesaikan tugas ini.
 - CSS: margin, padding, header tag, font-size, text-align, float, clear, border, color, div, span, placeholder, anchor tag.
 - Javascript : XMLHTTPRequest.
 - PHP: mysqli_connect, mysql_query, $_GET, $_POST, var_dump, print_r, echo, require, fungsi header.
@@ -120,7 +120,7 @@ Untuk meringankan beban tugas ini, ada beberapa keyword yang digunakan untuk men
 Jika ada pertanyaan silakan tanyakan lewat milis.
 
 ### Pembagian Tugas
-
+*Disarankan semua anggota kelompok mengerjakan tampilan dan fungsionalitasnya. Bukan hanya tampilan atau fungsionalitasnya saja*
 
 **Tampilan**
 1. Login                    : 13513043
