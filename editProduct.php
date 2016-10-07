@@ -104,7 +104,7 @@
 				<div class="photo-box">
 					<input type="button" name= "photo" value = "Choose File" onclick="return disableButton()"> <span class = "photo-name"><?php echo $photo?></span><br>
 				</div>
-					<input type="reset" name="cancel" value = "CANCEL">
+					<button class="cancel"> <a href="product.php?id_user=<?php echo $id_user?>"> CANCEL </a> </button>
 					<input type="submit" name="add" value = "UPDATE""> 
 			</form>
 		</div>
