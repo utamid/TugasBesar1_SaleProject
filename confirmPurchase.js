@@ -6,7 +6,7 @@ function validateForm() {
 	var v = document.confirmPurchaseForm.phone_number.value;
 	var u = document.confirmPurchaseForm.credit_card_number.value;
 	var t = document.confirmPurchaseForm.verification_value.value;
-	if (x == null || x == "" || y == null || y == "" || z == "" || z == null || w == "" || w == null || t == "" || t == null || u == "" || u == null || v == "" || v == null) {
+	if (x == null || x == "" || y == null || y == "" || !y.replace(/^\s+|\s+$/g,"") || z == "" || z == null || w == "" || w == null || t == "" || t == null || u == "" || u == null || v == "" || v == null) {
 		alert("Form must be completed");
 		return false;
 	} else if (u.length != 12) {
@@ -17,7 +17,13 @@ function validateForm() {
 		return false;
 	} 
 	else {
-		return true; 
+		var c = confirm("Are you sure you want to buy this product?");
+		if (c == true) {
+			return true;
+		}
+		else  {
+			return false;
+		}
 	}
 }
 function validateNumber() {
@@ -28,6 +34,15 @@ function validateNumber() {
 		return false;
 	}
 }
+function validateAlphabet() {
+	var key = (event.which) ? event.which : event.keyCode;
+	if (key == 32 || (key > 64 && key < 91) || (key > 96 && key < 123)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function limitText() {
 	var v = document.confirmPurchaseForm.credit_card_number;
 	var w = document.confirmPurchaseForm.verification_value;
@@ -51,3 +66,4 @@ function multiplication(y) {
 	var z = x.value * y;
 	document.confirmPurchaseForm.total_price.value = z.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
 }
+
