@@ -127,3 +127,19 @@ form input[type='button'] {
 .photo-name {
 	font-size: 14px;
 }
+.cancel {
+	float: right;
+	background-color: #3E88FC;
+	margin: 10px;
+	border: none;
+	cursor: pointer;
+	padding: 6px 18px;
+	width: 20%;
+	font-size: 14px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.cancel a {
+	color: white;
+	text-decoration: none;
+}
