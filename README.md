@@ -123,22 +123,23 @@ Jika ada pertanyaan silakan tanyakan lewat milis.
 *Disarankan semua anggota kelompok mengerjakan tampilan dan fungsionalitasnya. Bukan hanya tampilan atau fungsionalitasnya saja*
 
 **Tampilan**
+1. Login                    : 13513043, 13514063
+2. Register                 : 13513071, 13514043
+3. Catalog                  : 13514043
+4. Confirmation Purchase    : 13514063, 13514071
+5. Your Product             : 13514043
+6. Add Product              : 13514063, 13514071
+7. Edit Product             : 13514063, 13514071
+8. Sales                    : 13514071
+9. Purchases                : 13514071
+10. Header                  : 13514043
+
+**Fungsionalitas**
 1. Login                    : 13513043
 2. Register                 : 13513071
 3. Catalog                  : 13514043
 4. Confirmation Purchase    : 13514063
-5. Your Product             : 13514043
-6. Add Product              : 13514063
-7. Edit Product             : 13514063
-8. Sales                    : 13514071
-9. Purchases                : 13514071
-
-**Fungsionalitas**
-1. Login                    : 13513043, 13514063
-2. Register                 : 13513071
-3. Catalog                  : 13514043
-4. Confirmation Purchase    : 13514063
-5. Your Product             : 13514043
+5. Your Product             : 13514043, 13514063
 6. Add Product              : 13514063
 7. Edit Product             : 13514063
 8. Sales                    : 13514071
