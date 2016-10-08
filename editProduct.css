@@ -1,7 +1,6 @@
 html {
 	font-family: Montserrat;
 }
-
 /* SaleProject */
 h1 {
 	margin-top: 40px;
@@ -15,12 +14,10 @@ h1 {
 .project {
 	color: #6194BC;
 }
-
 .box {
 	width: 80%;
 	margin: auto;
 }
-
 /* What */
 h2 {
 	margin-top: 35px;
@@ -28,7 +25,6 @@ h2 {
 	font-weight: normal;
 	font-size: 23px;
 }
-
 /* Hi */
 .hi {
 	float: right;
@@ -50,7 +46,6 @@ h2 {
 	color: #E4001B;
 	text-decoration: none;
 }
-
 /* list */
 .menu {
 	margin-left: 10%;
@@ -83,7 +78,6 @@ li a:hover {
     background-color: #6194BC;
     color: white;
 }
-
 .fill-form {
 	width: 80%;
 	margin: auto;
@@ -138,8 +132,11 @@ form input[type='button'] {
 	font-size: 14px;
 	font-family: 'Montserrat', sans-serif;
 }
-
 .cancel a {
 	color: white;
 	text-decoration: none;
+}
+.err-msg {
+	font-size: 12px;
+	color: #E4001B;
 }
