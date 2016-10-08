@@ -50,7 +50,7 @@
 			
 		$servername = "localhost";
 		$username = "wbd";
-		$password = "6696f";
+		$password = "6696";
 		$dbname = "sale_project";
 		// Create connection
 		$conn = mysqli_connect($servername, $username, $password, $dbname);

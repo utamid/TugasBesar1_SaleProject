@@ -16,8 +16,8 @@
 		$id_product = $_GET['id_product'];
 		$id_user = $_GET['id_user'];
 		$servername = "localhost";
-		$username = "root";
-		$password = "1234";
+		$username = "wbd";
+		$password = "6696";
 		$dbname = "sale_project";
 		// Create connection
 		$conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -71,8 +71,8 @@
 				$description = test_input($_POST["description"]);
 				$price = test_input($_POST["price"]);	
 				$servername = "localhost";
-				$username = "root";
-				$password = "1234";
+				$username = "wbd";
+				$password = "6696";
 				$dbname = "sale_project";
 				// Create connection
 				$conn = mysqli_connect($servername, $username, $password, $dbname);
