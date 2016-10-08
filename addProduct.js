@@ -30,23 +30,38 @@ function validateFile()
 }
 function validateForm() {
 	var x = document.addProductForm.name.value;
-	var y = document.addProductForm.price.value;
-	var z = document.addProductForm.description.value;
+	var z = document.addProductForm.price.value;
+	var b = document.addProductForm.description.value;
 	var w = document.addProductForm.photo.value;
-	document.getElementById('errmsg').innerHTML="";
-	if (x == null || x == "" || y == null || y == "" || z == "" || z == null || w == "" || w == null) {
-		document.getElementById('errmsg').innerHTML="Please complete form";
-		return false;
+	document.getElementById('errname').innerHTML="";
+	document.getElementById('errdesc').innerHTML="";
+	document.getElementById('errprice').innerHTML="";
+	document.getElementById('errphoto').innerHTML="";
+	var a = true;
+	if (x == null || x == ""){
+		document.getElementById('errname').innerHTML="Please provide product name";
+		a = false;
 	}
-	else if (!validateFile()) {
-		document.getElementById('errmsg').innerHTML="Invalid file format";
-		return false;
+	if (z == null || z == ""){
+		document.getElementById('errprice').innerHTML="Please provide product price";
+		a = false;
 	}
-	else {
-		return true; 
+	if (w == null || w == ""){
+		document.getElementById('errphoto').innerHTML="Please provide photo of the product";
+		a = false;
+	} 	else if (!validateFile()) {
+		document.getElementById('errphoto').innerHTML="Invalid file format";
+		a = false;
 	}
+	if (b.length < 1 || !b.replace(/^\s+|\s+$/g,"")){
+		document.getElementById('errdesc').innerHTML="Please provide photo of the product";
+		a = false;
+	}
+	return a;
 }
-
 function clear_err() {
-	document.getElementById('errmsg').innerHTML="";
+	document.getElementById('errname').innerHTML="";
+	document.getElementById('errdesc').innerHTML="";
+	document.getElementById('errprice').innerHTML="";
+	document.getElementById('errphoto').innerHTML="";
 }
