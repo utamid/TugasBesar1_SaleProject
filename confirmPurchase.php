@@ -25,14 +25,12 @@
 		$result = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_assoc($result);
 		$usn = $row['username'];
-
 		$sql1 = "SELECT name, price FROM product WHERE id_product = '$id_product'";
 		$result1 = mysqli_query($conn, $sql1);
 		$row1 = mysqli_fetch_assoc($result1);
 		$name = $row1['name'];
 		$price = $row1['price'];
 		$printprice = number_format($price, 0, ',', '.');
-
 		$sql2 = "SELECT full_name, full_address, postal_code, phone_number FROM user WHERE id_user = '$id_user'";
 		$result2 = mysqli_query($conn, $sql2);
 		$row2 = mysqli_fetch_assoc($result2);
@@ -40,7 +38,6 @@
 		$full_address = $row2['full_address'];
 		$postal_code = $row2['postal_code'];
 		$phone_number = $row2['phone_number'];
-
 		mysqli_close($conn);
 		?>
 		<?php
@@ -53,7 +50,7 @@
 			
 		$servername = "localhost";
 		$username = "wbd";
-		$password = "6696";
+		$password = "6696f";
 		$dbname = "sale_project";
 		// Create connection
 		$conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -108,7 +105,6 @@
 			<h2> Please confirm your purchase</h2>
 			<hr>
 		</div>
-
 		<div class="fill-form">
 			<form method = "post" name = "confirmPurchaseForm" onsubmit="return validateForm()">
 				<div class="item-desc">
@@ -125,7 +121,7 @@
 								</tr>
 								<tr class=\"q\">
 									<td> Quantity </td>
-									<td> : <input type=\"text\" name =\"quantity\" class=\"quantity\" value = \"1\" onkeypress=\"return validateNumber()\" onkeydown=\"return multiplication($price)\" onkeyup=\"return multiplication($price)\"> pcs </td>
+									<td> : <input type=\"text\" name =\"quantity\" class=\"quantity\" value = \"1\" onkeypress=\"return validateNumber()\" onkeydown=\"return multiplication($price)\" onkeyup=\"return multiplication($price)\"> pcs </td> 
 								</tr>
 								<tr>
 									<td> Total Price </td>
@@ -136,21 +132,28 @@
 									<td> : </td>
 								</tr>
 							</table>
+							<div id = \"errq\" class=\"err-msg\"> </div> 
 						";
 					?>
 				</div>
 				<div class="con-form">
 					Consignee <br>
+					<div id = "errcons" class="err-msg"> </div>
 					<input type="text" name = "consignee" value = "<?php echo $consignee?>" onkeypress="return validateAlphabet()"> <br><br>
 					Full Address<br>
+					<div id = "erraddr" class="err-msg"> </div>
 					<textarea name = "full_address"><?php echo $full_address?></textarea> <br><br>
 					Postal Code <br>
+					<div id = "errpost" class="err-msg"> </div>
 					<input type="text" name = "postal_code" onkeypress="return validateNumber() && limitText()" onkeyup="return limitText()" value = "<?php echo $postal_code?>"> <br><br>
 					Phone Number <br>
+					<div id = "errphone" class="err-msg"> </div>
 					<input type="text" name = "phone_number" onkeypress="return validateNumber()&& limitText()" onkeyup="return limitText()" value = "<?php echo $phone_number?>"> <br><br>
 					12 Digits Credit Card Number <br>
+					<div id = "errccn" class="err-msg"> </div>
 					<input type="text" name = "credit_card_number" onkeypress="return validateNumber() && limitText()" onkeyup="return limitText()"> <br><br>
 					3 Digits Card Verification Value <br>
+					<div id = "errcvv" class="err-msg"> </div>
 					<input type="text" name = "verification_value" onkeypress="return validateNumber() && limitText()" onkeyup="return limitText()"> <br><br><br>
 					<button class="cancel"> <a href="catalog.php?id_user=<?php echo $id_user?>"> CANCEL </a> </button>
 					<input type="submit" name="confirm" value = "CONFIRM">
