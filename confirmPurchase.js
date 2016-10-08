@@ -6,25 +6,61 @@ function validateForm() {
 	var v = document.confirmPurchaseForm.phone_number.value;
 	var u = document.confirmPurchaseForm.credit_card_number.value;
 	var t = document.confirmPurchaseForm.verification_value.value;
-	if (x == null || x == "" || y == null || y == "" || !y.replace(/^\s+|\s+$/g,"") || z == "" || z == null || w == "" || w == null || t == "" || t == null || u == "" || u == null || v == "" || v == null) {
-		alert("Form must be completed");
-		return false;
-	} else if (u.length != 12) {
-		alert("Credit Card Number must be 12 Digits");
-		return false;
-	} else if (t.length != 3) {
-		alert("Card Verification Value must be 3 Digits");
-		return false;
-	} 
-	else {
+	var a = true;
+	document.getElementById('errq').innerHTML="";
+	document.getElementById('errcons').innerHTML="";
+	document.getElementById('erraddr').innerHTML="";
+	document.getElementById('errpost').innerHTML="";
+	document.getElementById('errphone').innerHTML="";
+	document.getElementById('errccn').innerHTML="";
+	document.getElementById('errcvv').innerHTML="";
+	if (y == null || y == "" || !y.replace(/^\s+|\s+$/g,"")) {
+		document.getElementById('errcons').innerHTML="Please provide consignee name";
+		a = false;	
+	}
+	if (z == null || z == "") {
+		document.getElementById('erraddr').innerHTML="Please provide address";
+		a = false;	
+	}
+	if (w == null || w == "") {
+		document.getElementById('errpost').innerHTML="Please provide postal code";
+		a = false;	
+	}
+	if (v == null || v == "") {
+		document.getElementById('errphone').innerHTML="Please provide phone number";
+		a = false;	
+	}
+	if (u == null || u == "") {
+		document.getElementById('errccn').innerHTML="Please provide credit card number";
+		a = false;	
+	}	else if (u.length != 12) {
+		document.getElementById('errccn').innerHTML="Credit Card Number must be 12 Digits";
+		a = false;
+	}
+	if (t == null || t == "") {
+		document.getElementById('errcvv').innerHTML="Please provide card verification value";
+		a = false;	
+	}	else if (t.length != 3) {
+		document.getElementById('errcvv').innerHTML="Card Verification Value must be 3 Digits";
+		a = false;	
+	}
+	if (x == null || x == "") {
+		document.getElementById('errq').innerHTML="Please enter quantity";
+		a = false;
+	} else if (x == 0) {
+		document.getElementById('errq').innerHTML="Quantity must be more than zero";
+		a = false;
+	}
+	if (a) {
 		var c = confirm("Are you sure you want to buy this product?");
 		if (c == true) {
-			return true;
+			a = true;
 		}
 		else  {
-			return false;
+			a = false;
 		}
 	}
+	return a;
 }
 function validateNumber() {
 	var key = (event.which) ? event.which : event.keyCode;
@@ -42,7 +78,6 @@ function validateAlphabet() {
 		return false;
 	}
 }
-
 function limitText() {
 	var v = document.confirmPurchaseForm.credit_card_number;
 	var w = document.confirmPurchaseForm.verification_value;
@@ -66,4 +101,3 @@ function multiplication(y) {
 	var z = x.value * y;
 	document.confirmPurchaseForm.total_price.value = z.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
 }
-
