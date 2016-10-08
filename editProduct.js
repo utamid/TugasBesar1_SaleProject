@@ -1,14 +1,26 @@
 function validateForm() {
 	var x = document.editProductForm.name.value;
-	var y = document.editProductForm.price.value;
-	var z = document.editProductForm.description.value;
-	if (x == null || x == "" || y == null || y == "" || z == "" || z == null) {
-		alert("Form must be completed");
-		return false;
+	var y = document.editProductForm.description.value;
+	var z = document.editProductForm.price.value;
+	document.getElementById('errname').innerHTML="";
+	document.getElementById('errdesc').innerHTML="";
+	document.getElementById('errprice').innerHTML="";
+
+	var a = true;
+	if (x == null || x == ""){
+		document.getElementById('errname').innerHTML="Please provide product name";
+		a = false;
 	}
-	else {
-		return true; 
+	if (y == null || y == ""){
+		document.getElementById('errdesc').innerHTML="Please provide product description";
+		a = false;
 	}
+	if (z == null || z == ""){
+		document.getElementById('errprice').innerHTML="Please provide product price";
+		a = false;
+	}
+	return a;
+	
 }
 function validateNumber() {
 	var key = (event.which) ? event.which : event.keyCode;
