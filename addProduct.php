@@ -25,7 +25,6 @@
 		$username = "wbd";
 		$password = "6696";
 		$dbname = "sale_project";
-
 		$conn = mysqli_connect($servername, $username, $password, $dbname);
 		if (!$conn) {
 			die("Connection failed: " . mysqli_connect_error());
@@ -106,14 +105,17 @@
 	<div class="fill-form">
 		<form name = "addProductForm" method = "post" onsubmit="return validateForm()" ontype enctype="multipart/form-data">
 			Name <br>
+			<div id = "errname" class="err-msg"> </div>
 			<input type="text" name="name"> <br>
 			Description (max 200 chars) <br>
+			<div id = "errdesc" class="err-msg"> </div>
 			<textarea name="description" onkeypress = "return limitText()" onkeyup="return limitText()"> </textarea> <br>
 			Price (IDR) <br>
+			<div id = "errprice" class="err-msg"> </div>
 			<input type="text" name="price" onkeypress="return validateNumber()"> <br>
 			Photo <br>
+			<div id = "errphoto" class="err-msg"> </div>
 			<input type="file" name="photo"> <br>
-			<div id = "errmsg" class="err-msg"> </div>
 			<input type="reset" name="cancel" value="CANCEL" onclick="return clear_err()">
 			<input type="submit" name="add" value="ADD"> 
 		</form>
