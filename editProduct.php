@@ -13,12 +13,11 @@
 			$data = htmlspecialchars($data);
 			return $data;
 		}
-
 		$id_product = $_GET['id_product'];
 		$id_user = $_GET['id_user'];
 		$servername = "localhost";
-		$username = "wbd";
-		$password = "6696";
+		$username = "root";
+		$password = "1234";
 		$dbname = "sale_project";
 		// Create connection
 		$conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -33,7 +32,6 @@
 		$description = $row['description'];
 		$price = $row['price'];
 		$photo = $row['photo'];
-
 		$sql1 = "SELECT id_user, username FROM user WHERE id_user = '$id_user'";
 		$result1 = mysqli_query($conn, $sql1);
 		$row1 = mysqli_fetch_assoc($result1);
@@ -73,8 +71,8 @@
 				$description = test_input($_POST["description"]);
 				$price = test_input($_POST["price"]);	
 				$servername = "localhost";
-				$username = "wbd";
-				$password = "6696";
+				$username = "root";
+				$password = "1234";
 				$dbname = "sale_project";
 				// Create connection
 				$conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -95,10 +93,13 @@
 		<div class="fill-form">
 			<form name = "editProductForm" method = "post" onsubmit="return validateForm()" ontype enctype="multipart/form-data">
 				Name <br>
+				<div id = "errname" class="err-msg"> </div>
 				<input type="text" name = "name" value="<?php echo $row['name'];?>"> <br>
 				Description (max 200 chars) <br>
+				<div id = "errdesc" class="err-msg"> </div>
 				<textarea name = "description" onkeypress = "return limitText()" onkeyup="return limitText()" ><?php echo $row['description'];?></textarea> <br>
 				Price (IDR) <br>
+				<div id = "errprice" class="err-msg"> </div>
 				<input type="text" name = "price" onkeypress="return validateNumber()" value="<?php echo $row['price'];?>"> <br>
 				Photo <br>
 				<div class="photo-box">
