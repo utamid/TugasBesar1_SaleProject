@@ -1,5 +1,4 @@
 function validate() {
-	alert("masuk iniloh");
 	var a = document.register.username;
 	var b = document.register.fullname;
 	var c = document.register.mail;
@@ -18,7 +17,6 @@ function validate() {
 	document.getElementById('errpn').innerHTML="";
 
 	var x = true;
-	alert("masuk ini gk");
 	if (a.value == "") {
 		document.getElementById('errun').innerHTML="Please provide your username";
 		x = false;

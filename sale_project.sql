@@ -16,6 +16,23 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `likes`
+--
+
+DROP TABLE IF EXISTS `likes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `likes` (
+  `id_user` int(20) DEFAULT NULL,
+  `id_product` int(20) DEFAULT NULL,
+  KEY `id_user` (`id_user`),
+  KEY `id_product` (`id_product`),
+  CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
+  CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `product`
 --
 
@@ -29,25 +46,14 @@ CREATE TABLE `product` (
   `description` varchar(200) DEFAULT NULL,
   `date_added` date DEFAULT NULL,
   `time_added` time DEFAULT NULL,
-  `likes` int(20) DEFAULT NULL,
-  `purchases` int(20) DEFAULT NULL,
   `seller_id` int(20) NOT NULL,
   `photo` longblob,
+  `deleted` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_product`,`seller_id`),
   KEY `seller_id` (`seller_id`),
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `product`
---
-
-LOCK TABLES `product` WRITE;
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (19,'Ades',3000,'Air minum dalam kemasan','2016-10-04','15:09:50',2,100,5,'img/a.jpg'),(20,'AQUA',3500,'Air minum mineral','2016-10-04','15:10:33',5,121,6,'img/a.jpg'),(21,'Nasi Kuning',6000,'Nasi kuning dengan telur, tempe, dan bihun','2016-10-04','15:11:59',100,1412,4,'img/a.jpg');
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `purchase`
@@ -77,17 +83,8 @@ CREATE TABLE `purchase` (
   KEY `id_buyer` (`id_buyer`),
   CONSTRAINT `purchase_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`),
   CONSTRAINT `purchase_ibfk_2` FOREIGN KEY (`id_buyer`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `purchase`
---
-
-LOCK TABLES `purchase` WRITE;
-/*!40000 ALTER TABLE `purchase` DISABLE KEYS */;
-/*!40000 ALTER TABLE `purchase` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
@@ -106,18 +103,8 @@ CREATE TABLE `user` (
   `phone_number` varchar(15) DEFAULT NULL,
   `email` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (4,'Vitra Chandra','vitchan','6696','Jl Cimbel','40121','08126087846','vitrachandra@gmail.com'),(5,'Steffi Indrayani','jooney_16s','1234','Jl Pelangi','40123','081234567890','steffiinin@gmail.com'),(6,'Taufic Leonardo Sutejo','upiki','taufic96','Jl Cisitu','40151','0812131415161','tauficls@gmail.com');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -128,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-04 17:35:37
+-- Dump completed on 2016-10-08 17:01:06

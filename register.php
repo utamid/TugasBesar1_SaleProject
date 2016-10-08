@@ -95,7 +95,9 @@
 							}
 						}
 						else {
-							$errun = "Username already exists";
+							echo "
+								<div class=\"inv\">Username or email already exist
+								</div>";
 						}
 						mysqli_close($conn);
 					}

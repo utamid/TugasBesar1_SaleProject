@@ -59,7 +59,7 @@
 				die("Connection failed: " . mysqli_connect_error());
 			}
 
-			$sql = "SELECT date_purchased, time_purchased, photo, product_name, purchase.price, quantity, total_price, username, consignee, purchase.full_address as f_add, purchase.postal_code as p_code, purchase.phone_number as p_num FROM purchase, product, user WHERE seller_id = $idus AND id_buyer = id_user AND purchase.id_product = product.id_product";
+			$sql = "SELECT date_purchased, time_purchased, photo, product_name, purchase.price, quantity, total_price, username, consignee, purchase.full_address as f_add, purchase.postal_code as p_code, purchase.phone_number as p_num FROM purchase, product, user WHERE seller_id = $idus AND id_buyer = id_user AND purchase.id_product = product.id_product ORDER BY date_purchased DESC, time_purchased DESC";
 
 			$result = mysqli_query($conn, $sql);
 			while ($row = mysqli_fetch_assoc($result)) {
