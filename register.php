@@ -34,7 +34,7 @@
 					<br>
 					Email<br>
 					<div id = "errmail" class="err-msg"> </div>
-					<input type="email" name="mail">
+					<input type="text" name="mail">
 					<br>
 					Password<br>
 					<div id = "errpass" class="err-msg"> </div>
@@ -47,7 +47,7 @@
 					Full Address<br>
 					<div id = "erraddr" class="err-msg"> </div>
 					<textarea name="address"></textarea>
-					<br>	
+					<br>
 					Postal Code<br>
 					<div id = "errpc" class="err-msg"> </div>
 					<input type="text" name="postcode">

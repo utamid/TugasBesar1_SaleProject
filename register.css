@@ -34,7 +34,7 @@ form {
 	margin-top: 20px;
 	font-size: 12px;
 }
-form input[type=text], input[type=email], input[type=password], input[type=tel] {
+form input[type=text], input[type=password], input[type=tel] {
 	font-family: Montserrat;
 	margin: auto;
 	margin-bottom: 15px;
